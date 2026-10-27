@@ -1,6 +1,7 @@
 
 export const validateProjectData = async (data: any) => {
     const { title, description, projectType, status, priority, deadline } = data;
+    const today = new Date().toISOString().split("T")[0];
 
     if (!title?.trim()) return "Title is required";
     if (!description?.trim()) return "Description is required";
@@ -19,6 +20,10 @@ export const validateProjectData = async (data: any) => {
 
     if (!deadline || isNaN(Date.parse(deadline))) {
         return "Valid deadline is required";
+    }
+
+     if (!deadline || deadline < today) {
+        return "Valid future deadline is required";
     }
 
     return null; // Valid

@@ -9,7 +9,9 @@ export function TaskCard({ TopBarColor, name, value, icon }: { TopBarColor: stri
                 className={`text-[#151515] p-2 px-4 font-semibold`}>{name}</span>
             <div className="p-2 px-4 flex items-center justify-between">
                 <h1 className="h1 font-semibold bricolage text-white">{value}</h1>
-                <figure className="bg-[#36353A] rounded-full p-2">
+                <figure
+                    style={{ backgroundColor: TopBarColor }}
+                    className="rounded-full p-2">
                     <Icon
                         icon={icon}
                         width={24}

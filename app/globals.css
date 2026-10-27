@@ -20,6 +20,9 @@ body {
   font-family: var(--font-hanken);
 }
 
+figure{
+  cursor: pointer !important;
+}
 
 /* Headings  */
 

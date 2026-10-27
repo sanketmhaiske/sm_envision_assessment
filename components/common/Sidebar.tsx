@@ -31,7 +31,7 @@ export function Sidebar() {
                         height={30}
                     />
                 </Link>
-                <Link
+                {/* <Link
                     href='/tasks'
                     className={`${pathname.includes('tasks') ? 'bg-white text-gray-600' : 'text-white'} p-2 rounded-md`}>
                     <Icon
@@ -39,7 +39,7 @@ export function Sidebar() {
                         width={30}
                         height={30}
                     />
-                </Link>
+                </Link> */}
             </div>
         </div>
     )

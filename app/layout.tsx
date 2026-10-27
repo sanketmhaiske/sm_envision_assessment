@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import { QueryProvider } from "./QueryProvider";
+import { Suspense } from "react";
 
 
 const bricolage = Bricolage_Grotesque({
@@ -27,9 +28,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${hanken.variable} ${bricolage.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <QueryProvider>
-          {children}
-        </QueryProvider>
+        <Suspense fallback={<div>Loading...</div>}>
+          <QueryProvider>
+            {children}
+          </QueryProvider>
+        </Suspense>
       </body>
     </html>
   );

@@ -10,11 +10,12 @@ export function QueryProvider({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
 
     return (
-        <QueryClientProvider
-            client={queryClient}
-        >
-            {pathname == "/" ? <>  {children} </> :
-                <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Loading...</div>}>
+            <QueryClientProvider
+                client={queryClient}
+            >
+                {pathname == "/" ? <>  {children} </> :
+
                     <div className="flex">
                         <Sidebar />
                         <div className="flex flex-col ml-30 w-[calc(100%-150px)]">
@@ -24,9 +25,9 @@ export function QueryProvider({ children }: { children: React.ReactNode }) {
                             </div>
                         </div>
                     </div>
-                </Suspense>
-            }
-        </QueryClientProvider>
 
+                }
+            </QueryClientProvider>
+        </Suspense>
     )
 }

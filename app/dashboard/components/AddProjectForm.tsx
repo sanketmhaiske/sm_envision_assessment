@@ -8,7 +8,13 @@ import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 
-export function AddProjectForm({ setAddProjectForm }: { setAddProjectForm: (value: boolean) => void }) {
+
+type AddProjectType = {
+    setAddProjectForm: (value: boolean) => void,
+    setAlertPopup: ({ show, message, type }: { show: boolean, message: string, type: string }) => void
+}
+
+export function AddProjectForm({ setAddProjectForm, setAlertPopup }: AddProjectType) {
     const [form, setForm] = useState({
         title: '',
         description: '',
@@ -38,10 +44,19 @@ export function AddProjectForm({ setAddProjectForm }: { setAddProjectForm: (valu
                 status: '',
                 deadline: ''
             })
-            console.log(data)
+            setAlertPopup({
+                show: true,
+                message: "Project created successfully",
+                type: "success"
+            })
         },
         onError: (error: any) => {
             console.log(error)
+            setAlertPopup({
+                show: true,
+                message: error?.message || "Project added successfully",
+                type: "success"
+            })
         }
     })
 

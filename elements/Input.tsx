@@ -8,9 +8,10 @@ type InputTypes = {
     className?: string
     icon?: string
     label?: string
+    defaultValue?: string
 }
 
-export function Input({ name, placeholder, onChange, className, icon, type, label }: InputTypes) {
+export function Input({ name, placeholder, onChange, className, icon, type, label , defaultValue}: InputTypes) {
     return (
         <div>
             {label && <label className="text-gray-200 font-medium mb-1 flex text-xs">{label}</label>}
@@ -27,6 +28,7 @@ export function Input({ name, placeholder, onChange, className, icon, type, labe
                     type={type}
                     name={name}
                     placeholder={placeholder}
+                    defaultValue={defaultValue}
                     onChange={onChange}
                     className={`bg-transparent text-gray-200 text-sm p-2 w-full outline-none ${className}`}
                 />

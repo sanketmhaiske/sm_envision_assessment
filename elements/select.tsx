@@ -8,9 +8,11 @@ type SelectTypes = {
     icon?: string
     label?: string
     options: { value: string, label: string }[]
+    defaultValue?: string
+    value?: string
 }
 
-export function Select({ name, placeholder, onChange, className, icon, label, options }: SelectTypes) {
+export function Select({ name, placeholder, onChange, className, icon, label, options, defaultValue, value}: SelectTypes) {
     return (
         <div>
             {label && <label className="text-gray-200 font-medium mb-1 flex text-xs">{label}</label>}
@@ -26,6 +28,7 @@ export function Select({ name, placeholder, onChange, className, icon, label, op
                 <select
                     name={name}
                     onChange={onChange}
+                    value={value}
                     className="bg-transparent text-gray-200 text-sm p-2 w-full outline-none">
                     <option value="">{placeholder}</option>
                     {options.map((option: any) => (

@@ -18,7 +18,7 @@ export function SearchBar() {
                         icon="material-symbols:search-rounded"
                         label=""
                         onChange={() => ''}
-                        className="w-[500px]"
+                        className="w-125"
                     />
                     <small className="text-gray-400 text-xs">180 Projects</small>
                 </div>
