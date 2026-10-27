@@ -2,12 +2,19 @@
 // import { AddProjectForm } from "@/app/dashboard/components/AddProjectForm";
 import { Button } from "@/elements/Button";
 import { Input } from "@/elements/Input";
+import { Icon } from "@iconify/react";
 import { useState } from "react";
 
-export function SearchTask({ setAddTaskForm }: { setAddTaskForm: (value: boolean) => void }) {
+
+type SearchTaskType = {
+    setAddTaskForm: (value: boolean) => void
+    setSearchValue: (value: string) => void
+    projectTasksLength: number
+}
+
+export function SearchTask({ setAddTaskForm, setSearchValue, projectTasksLength }: SearchTaskType) {
     return (
         <>
-            {/* {addProjectForm && <AddProjectForm setAddProjectForm={setAddProjectForm} />} */}
             <div className="flex items-center justify-between mt-12">
                 <div className="flex items-center gap-2">
                     <Input
@@ -16,15 +23,15 @@ export function SearchTask({ setAddTaskForm }: { setAddTaskForm: (value: boolean
                         placeholder="Search tasks"
                         icon="material-symbols:search-rounded"
                         label=""
-                        onChange={() => ''}
+                        onChange={(e) => setSearchValue(e.target.value)}
                         className="w-125"
                     />
-                    <small className="text-gray-400 text-xs">10 tasks</small>
+                    <small className="text-gray-400 text-xs">{projectTasksLength} tasks</small>
                 </div>
                 <Button
-                    text="New Task"
+                    text={<><Icon icon="akar-icons:plus" width={16} height={16} />New Task</>}
                     icon=""
-                    className="bg-gray-400 text-white"
+                    className="bg-[#FFE288] text-[#1D1D1D] font-semibold"
                     onClick={() => setAddTaskForm(true)}
                 />
             </div>

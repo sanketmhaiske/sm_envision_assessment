@@ -4,17 +4,21 @@ type CardProps = {
     title: string;
     icon: string;
     value: number;
+    bgColor?: string
 };
 
 export const Card = ({
     title,
     icon,
     value,
+    bgColor,
 }: CardProps) => {
     return (
         <div className="flex flex-col justify-between bg-[#1D1D1D] rounded-md w-50 h-32 p-4">
             <div className="flex items-start justify-between">
-                <figure className="bg-[#36353A] rounded-full p-2 text-[#95959F] flex justify-between items-start">
+                <figure
+                    style={{ background: bgColor }}
+                    className="rounded-full p-2 text-[#1D1D1D] flex justify-between items-start">
                     <Icon
                         icon={icon}
                         width={24}

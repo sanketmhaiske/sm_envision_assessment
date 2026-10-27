@@ -24,21 +24,25 @@ export async function DashboardContent() {
                     title="Total Projects"
                     icon="ic:outline-workspaces"
                     value={projects?.length || 0}
+                    bgColor="#7F9EF1"
                 />
                 <Card
                     title="Active Projects"
                     icon="fluent:flash-20-regular"
                     value={projects?.filter((p: any) => p.status === "Active").length || 0}
+                    bgColor="#75F1A8"
                 />
                 <Card
                     title="Completed Tasks"
                     icon="fluent-mdl2:completed"
                     value={tasks?.filter((t: any) => t.status === "Completed").length || 0}
+                    bgColor="#FFE288"
                 />
                 <Card
                     title="Pending Tasks"
                     icon="iconoven:pending-clock-sharp"
                     value={tasks?.filter((t: any) => t.status === "Pending").length || 0}
+                    bgColor="#F09A69"
                 />
             </div>
 

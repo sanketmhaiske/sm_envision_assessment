@@ -8,7 +8,7 @@ export const getProjects = async () => {
 }
 
 export const getAllTasks = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/tasks`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/tasks?reqType=all`, {
         cache: "no-store",
     });
     const tasks = await res.json();

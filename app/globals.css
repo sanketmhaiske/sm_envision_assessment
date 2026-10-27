@@ -59,9 +59,8 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 select:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px white inset !important;
-  -webkit-text-fill-color: #111827 !important;
-  transition: background-color 9999s ease-in-out 0s;
+  -webkit-text-fill-color: #fff !important;
+  -webkit-box-shadow: 0 0 0 1000px #1D1D1D inset !important;
 }
 
 .fixedBG {

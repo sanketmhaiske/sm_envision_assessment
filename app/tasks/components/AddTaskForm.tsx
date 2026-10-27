@@ -156,8 +156,9 @@ export function AddTaskForm({ setAddTaskForm, projectId, refetch }: TaskFormProp
                 <Button
                     text={handleSubmit.isPending ? "Adding..." : "Add Task"}
                     icon=""
-                    className="bg-gray-400 text-white mt-6"
+                    className="bg-[#FFE288] text-[#1D1D1D] font-semibold mt-6"
                     onClick={() => handleSubmit.mutate()}
+                    disabled={handleSubmit.isPending}
                 />
             </div>
         </section>

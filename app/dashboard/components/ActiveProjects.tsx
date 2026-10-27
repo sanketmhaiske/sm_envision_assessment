@@ -124,9 +124,9 @@ export function ActiveProjects({ activeProjects }: { activeProjects: Array<any> 
                     <small className="text-gray-200">Your active projects overview</small>
                 </div>
                 <Button
-                    text="New Project"
+                    text={<><Icon icon="akar-icons:plus" width={16} height={16} /> New Project</>}
                     icon=""
-                    className="bg-gray-400 text-white"
+                    className="bg-[#FFE288] text-[#1D1D1D] font-semibold"
                     onClick={() => setAddProjectForm(true)}
                 />
             </div>

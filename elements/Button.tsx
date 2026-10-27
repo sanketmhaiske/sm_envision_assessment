@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react"
 
 
 type ButtonTypes = {
-    text: string,
+    text: React.ReactNode | string,
     className?: string,
     type?: string
     onClick?: () => void
@@ -24,7 +24,7 @@ export function Button({ text, className, type, onClick, disabled, icon }: Butto
             <button
                 disabled={disabled}
                 onClick={onClick}
-                className={`text-nowrap ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
+                className={`text-nowrap flex items-center gap-1 ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
                 {text}
             </button>
         </div>

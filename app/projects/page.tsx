@@ -1,6 +1,5 @@
 import { Projects } from "./components/Projects";
 import { getProjects } from "@/hook/api";
-import { SearchBar } from "./components/SearchBar";
 import { Suspense } from "react";
 
 
@@ -20,7 +19,6 @@ async function ProjectContent() {
                 <h2 className="h2 text-white bricolage">Projects</h2>
                 <small className="text-gray-400 text-xs">Manage and track all your projects.</small>
             </div>
-            <SearchBar />
             <Projects projects={projects} />
         </section>
     )

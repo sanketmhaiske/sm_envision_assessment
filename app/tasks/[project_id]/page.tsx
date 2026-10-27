@@ -4,7 +4,6 @@ import { TaskCard } from "../components/TaskCard";
 import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { TaskTable } from "../components/TaskTable";
-import { SearchTask } from "../components/SearchTasks";
 import { AddTaskForm } from "../components/AddTaskForm";
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
@@ -67,9 +66,6 @@ export default function Page() {
                     icon="fluent-mdl2:completed"
                 />
             </div>
-            <SearchTask
-                setAddTaskForm={setAddTaskForm}
-            />
             {addTaskForm &&
                 <AddTaskForm
                     setAddTaskForm={setAddTaskForm}
@@ -82,6 +78,7 @@ export default function Page() {
                 <TaskTable
                     projectTasks={tasks}
                     refetch={refetch}
+                    setAddTaskForm={setAddTaskForm}
                 />
             }
         </section>

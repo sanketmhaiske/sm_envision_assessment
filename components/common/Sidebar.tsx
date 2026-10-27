@@ -8,10 +8,16 @@ export function Sidebar() {
     const pathname = usePathname();
 
     return (
-        <div className="w-[80px] bg-[#151515] h-screen fixed left-0 flex flex-col items-center">
-            <figure className="bg-gray-50 rounded-full w-12 h-12 my-4">
-
-            </figure>
+        <div className="w-20 bg-[#151515] h-screen fixed left-0 flex flex-col items-center">
+            <Link
+                href={'/dashboard'}
+                className="bg-[#353540] text-[#7F9EF1] rounded-full w-12 h-12 my-4 flex justify-center items-center">
+                <Icon
+                    icon="ant-design:project-outlined"
+                    width={30}
+                    height={30}
+                />
+            </Link>
             <div className="flex flex-col gap-8 mt-8">
                 <Link
                     href="/dashboard"

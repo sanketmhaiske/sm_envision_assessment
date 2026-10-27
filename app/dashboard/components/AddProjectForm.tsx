@@ -62,7 +62,7 @@ export function AddProjectForm({ setAddProjectForm, setAlertPopup }: AddProjectT
 
     return (
         <section className="fixedBG">
-            <div className="bg-[#18151C] p-6 rounded-md relative">
+            <div className="bg-[#18151C] border border-[#353540] p-6 rounded-md relative">
                 <div className="flex flex-col">
                     <h5 className="text-white h4 bricolage font-semibold">
                         Add Project
@@ -151,7 +151,7 @@ export function AddProjectForm({ setAddProjectForm, setAlertPopup }: AddProjectT
                 <Button
                     text={handleSubmit.isPending ? "Adding..." : "Add Project"}
                     icon=""
-                    className="bg-gray-400 text-white mt-6"
+                    className="bg-[#FFE288] text-[#1D1D1D] mt-6 font-semibold"
                     onClick={() => handleSubmit.mutate()}
                 />
             </div>
