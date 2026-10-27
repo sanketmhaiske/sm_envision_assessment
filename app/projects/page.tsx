@@ -1,25 +1,24 @@
+'use client'
 import { Projects } from "./components/Projects";
-import { getProjects } from "@/hook/api";
-import { Suspense } from "react";
+import { getProjects } from "@/hook/axiosClient";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 
 
 export default function Page() {
-    return (
-        <Suspense fallback={<p className="text-white">Loading projects...</p>}>
-            <ProjectContent />
-        </Suspense>
-    )
-}
+    const { data: projects, isLoading, refetch } = useQuery({
+        queryKey: ["projects"],
+        queryFn: async () => await getProjects()
+    });
 
-async function ProjectContent() {
-    const projects = await getProjects();
     return (
         <section className="mb-16">
             <div className="flex flex-col">
                 <h2 className="h2 text-white bricolage">Projects</h2>
                 <small className="text-gray-400 text-xs">Manage and track all your projects.</small>
             </div>
-            <Projects projects={projects} />
+            {isLoading && <p>Loading...</p>}
+            {projects?.length && <Projects projects={projects} refetch={refetch} />}
         </section>
     )
 }

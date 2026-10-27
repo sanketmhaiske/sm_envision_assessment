@@ -1,6 +1,7 @@
 "use client";
 
-import { updateTaskStatusChange } from "@/hook/api";
+import { Button } from "@/elements/Button";
+import { updateTaskStatusChange } from "@/hook/axiosClient";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 
@@ -45,7 +46,7 @@ export default function TaskProgress({
             }, 2000);
 
         },
-        onError: (err:any) => {
+        onError: (err: any) => {
             console.log(err)
             setAlertPopup({
                 show: true,
@@ -79,20 +80,19 @@ export default function TaskProgress({
                 </select>
 
                 <div className="mt-5 flex justify-end gap-3">
-                    <button
+                    <Button
+                        text="Close"
+                        icon=""
+                        className="bg-gray-300 w-max"
                         onClick={onClose}
-                        className="rounded-lg border border-gray-600 px-4 py-2 text-sm text-gray-300"
-                    >
-                        Cancel
-                    </button>
-
-                    <button
+                    />
+                    <Button
+                        text={handleTaskStatusChange.isPending ? "Saving..." : "Save Status"}
+                        icon=""
+                        className="bg-[#FFE288] text-[#1D1D1D] font-semibold w-max"
                         onClick={() => handleTaskStatusChange.mutate(status)}
                         disabled={status === currentStatus}
-                        className="rounded-lg bg-indigo-600 px-4 py-2 text-sm text-white hover:bg-indigo-500 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                        {handleTaskStatusChange.isPending ? "Saving..." : "Save Status"}
-                    </button>
+                    />
                 </div>
             </div>
         </div>

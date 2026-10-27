@@ -3,7 +3,7 @@ import { Button } from "@/elements/Button";
 import { Input } from "@/elements/Input";
 import { Select } from "@/elements/select";
 import { TextArea } from "@/elements/TextArea";
-import { getProjectDetails, updateProject } from "@/hook/api";
+import { getProjectDetails, updateProject } from "@/hook/axiosClient";
 import { useMutation } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
@@ -14,9 +14,10 @@ type ProjectFormProps = {
     setUpdateProjectForm: ({ projectId, show }: { projectId: string, show: boolean }) => void,
     projectId: string
     setAlertPopup: ({ show, message, type }: { show: boolean, message: string, type: string }) => void
+    refetch: () => void
 }
 
-export function UpdateProjectForm({ setUpdateProjectForm, projectId , setAlertPopup}: ProjectFormProps) {
+export function UpdateProjectForm({ setUpdateProjectForm, projectId , setAlertPopup, refetch}: ProjectFormProps) {
     const [form, setForm] = useState({
         title: '',
         description: '',
@@ -29,7 +30,6 @@ export function UpdateProjectForm({ setUpdateProjectForm, projectId , setAlertPo
         const getProject = async () => {
             if (!projectId) return;
             const project = await getProjectDetails(projectId);
-            console.log(project, 'project')
             setForm(project)
         }
         getProject();
@@ -64,7 +64,8 @@ export function UpdateProjectForm({ setUpdateProjectForm, projectId , setAlertPo
                 type: "success"
             })
             setTimeout(() => {
-                window.location.reload();
+                setUpdateProjectForm({ projectId: "", show: false })
+                refetch();
             }, 2000);
         },
         onError: (error: any) => {
@@ -151,7 +152,7 @@ export function UpdateProjectForm({ setUpdateProjectForm, projectId , setAlertPo
                 <Button
                     text={handleUpdate.isPending ? "Updating..." : "Update Project"}
                     icon=""
-                    className="bg-gray-400 text-white mt-6"
+                    className="bg-[#FFE288] text-[#1D1D1D] mt-6"
                     onClick={() => handleUpdate.mutate()}
                 />
             </div>

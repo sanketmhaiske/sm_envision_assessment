@@ -4,7 +4,7 @@ import { Button } from "@/elements/Button";
 import { Input } from "@/elements/Input";
 import { Select } from "@/elements/select";
 import { TextArea } from "@/elements/TextArea";
-import { addTask } from "@/hook/api";
+import { addTask } from "@/hook/axiosClient";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
@@ -59,6 +59,7 @@ export function AddTaskForm({ setAddTaskForm, projectId, refetch }: TaskFormProp
                 type: "success"
             })
             setTimeout(() => {
+                setAddTaskForm(false)
                 refetch();
             }, 2000);
         },

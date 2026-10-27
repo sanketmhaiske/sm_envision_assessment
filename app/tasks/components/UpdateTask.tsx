@@ -3,11 +3,12 @@ import { Button } from "@/elements/Button";
 import { Input } from "@/elements/Input";
 import { Select } from "@/elements/select";
 import { TextArea } from "@/elements/TextArea";
-import { addTask, getTaskDetails, updateTask } from "@/hook/api";
-import { useMutation } from "@tanstack/react-query";
+import { addTask, getTaskDetails, updateTask } from "@/hook/axiosClient";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import { AlertPopup } from "@/components/common/AlertPopup"
+import { set } from "mongoose";
 
 type TaskFormProps = {
     setUpdateTaskForm: ({ taskId, show }: { taskId: string, show: boolean }) => void,
@@ -31,15 +32,15 @@ export function UpdateTaskForm({ setUpdateTaskForm, taskId, projectId, refetch }
         type: ''
     });
 
+    const { data } = useQuery({
+        queryKey: ['task', taskId],
+        queryFn: async () => await getTaskDetails(taskId),
+        enabled: !!taskId
+    })
+
     useEffect(() => {
-        const getTask = async () => {
-            if (!taskId) return;
-            const task = await getTaskDetails(taskId);
-            console.log(task)
-            setForm(task)
-        }
-        getTask();
-    }, [taskId])
+        setForm(data?.data.result)
+    }, [data?.data])
 
 
     const handleChange = (e: { target: { name: string, value: string } }) => {
@@ -174,7 +175,7 @@ export function UpdateTaskForm({ setUpdateTaskForm, taskId, projectId, refetch }
                 <Button
                     text={handleUpdate.isPending ? "Updating..." : "Update Task"}
                     icon=""
-                    className="bg-gray-400 text-white mt-6"
+                    className="bg-[#FFE288] text-[#1D1D1D] mt-6"
                     onClick={() => handleUpdate.mutate()}
                 />
             </div>

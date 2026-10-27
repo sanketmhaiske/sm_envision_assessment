@@ -4,8 +4,7 @@ import { AddProjectForm } from "./AddProjectForm"
 import { useState } from "react"
 import { Icon } from "@iconify/react"
 import { WarningPopup } from "@/components/common/WarningPopup"
-import { Select } from "@/elements/select"
-import { deleteProject } from "@/hook/api"
+import { deleteProject } from "@/hook/axiosClient"
 import { useMutation } from "@tanstack/react-query"
 import Link from "next/link"
 import { UpdateProjectForm } from "../../projects/components/UpdateProjectForm"
@@ -13,7 +12,7 @@ import ProjectDetailsPopup from "@/app/projects/components/ProjectDetails"
 import { AlertPopup } from "@/components/common/AlertPopup"
 import { formatDate } from "@/utils/formatDate"
 
-export function ActiveProjects({ activeProjects }: { activeProjects: Array<any> }) {
+export function ActiveProjects({ activeProjects, refetch }: { activeProjects: Array<any>, refetch: () => void }) {
     const [addProjectForm, setAddProjectForm] = useState(false);
     const [alertPopup, setAlertPopup] = useState({
         show: false,
@@ -47,15 +46,16 @@ export function ActiveProjects({ activeProjects }: { activeProjects: Array<any> 
             return await deleteProject({ _id: deleteProjectWarning?._id })
         },
         onSuccess: (data: any) => {
-            console.log(data)
             setAlertPopup({
                 show: true,
                 message: "Project deleted successfully",
                 type: "success"
             })
+            setTimeout(() => {
+                refetch();
+            }, 2000);
         },
         onError: (err: any) => {
-            console.log(err)
             setAlertPopup({
                 show: true,
                 message: err?.response?.data?.message || "Failed to delete project",
@@ -70,6 +70,7 @@ export function ActiveProjects({ activeProjects }: { activeProjects: Array<any> 
                 <AddProjectForm
                     setAddProjectForm={setAddProjectForm}
                     setAlertPopup={setAlertPopup}
+                    refetch={refetch}
                 />}
             {/* Warning Popup */}
             {deleteProjectWarning.warning &&
@@ -88,6 +89,7 @@ export function ActiveProjects({ activeProjects }: { activeProjects: Array<any> 
                     })}
                     projectId={updateProjectForm.projectId}
                     setAlertPopup={setAlertPopup}
+                    refetch={refetch}
                 />
             }
             {projectDetails.show &&
@@ -109,11 +111,14 @@ export function ActiveProjects({ activeProjects }: { activeProjects: Array<any> 
             }
             {alertPopup.show &&
                 <AlertPopup
-                    close={() => setAlertPopup({
-                        show: false,
-                        message: "",
-                        type: ''
-                    })}
+                    close={() => {
+                        setDeleteProjectWarning({ _id: "", warning: false })
+                        setAlertPopup({
+                            show: false,
+                            message: "",
+                            type: ''
+                        })
+                    }}
                     message={alertPopup.message}
                     alertType={alertPopup.type}
                 />
@@ -126,7 +131,7 @@ export function ActiveProjects({ activeProjects }: { activeProjects: Array<any> 
                 <Button
                     text={<><Icon icon="akar-icons:plus" width={16} height={16} /> New Project</>}
                     icon=""
-                    className="bg-[#FFE288] text-[#1D1D1D] font-semibold"
+                    className="bg-[#FFE288] text-[#1D1D1D] font-semibold w-max"
                     onClick={() => setAddProjectForm(true)}
                 />
             </div>

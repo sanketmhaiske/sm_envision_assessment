@@ -3,7 +3,7 @@ import { Button } from "@/elements/Button";
 import { Input } from "@/elements/Input";
 import { Select } from "@/elements/select";
 import { TextArea } from "@/elements/TextArea";
-import { postProject } from "@/hook/api";
+import { postProject } from "@/hook/axiosClient";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
@@ -12,9 +12,10 @@ import { Icon } from "@iconify/react";
 type AddProjectType = {
     setAddProjectForm: (value: boolean) => void,
     setAlertPopup: ({ show, message, type }: { show: boolean, message: string, type: string }) => void
+    refetch: () => void
 }
 
-export function AddProjectForm({ setAddProjectForm, setAlertPopup }: AddProjectType) {
+export function AddProjectForm({ setAddProjectForm, setAlertPopup, refetch }: AddProjectType) {
     const [form, setForm] = useState({
         title: '',
         description: '',
@@ -49,6 +50,10 @@ export function AddProjectForm({ setAddProjectForm, setAlertPopup }: AddProjectT
                 message: "Project created successfully",
                 type: "success"
             })
+            setTimeout(() => {
+                setAddProjectForm(false);
+                refetch();
+            }, 2000);
         },
         onError: (error: any) => {
             console.log(error)

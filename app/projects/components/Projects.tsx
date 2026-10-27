@@ -2,18 +2,20 @@
 import { WarningPopup } from "@/components/common/WarningPopup"
 import { Button } from "@/elements/Button"
 import { Select } from "@/elements/select"
-import { deleteProject } from "@/hook/api"
+import { deleteProject } from "@/hook/axiosClient"
 import { Icon } from "@iconify/react"
 import { useMutation } from "@tanstack/react-query"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { UpdateProjectForm } from "./UpdateProjectForm"
 import ProjectDetailsPopup from "./ProjectDetails"
 import { formatDate } from "@/utils/formatDate"
 import { AlertPopup } from "@/components/common/AlertPopup"
 import { SearchBar } from "./SearchBar"
+import { AddProjectForm } from "@/app/dashboard/components/AddProjectForm"
 
-export function Projects({ projects }: { projects: Array<any> }) {
+export function Projects({ projects, refetch }: { projects: Array<any>, refetch: () => void }) {
+    const [addProjectForm, setAddProjectForm] = useState(false)
     const [searchValue, setSearchValue] = useState("");
     const [filter, setFilter] = useState("All");
     const [alertPopup, setAlertPopup] = useState({
@@ -48,10 +50,23 @@ export function Projects({ projects }: { projects: Array<any> }) {
             return await deleteProject({ _id: deleteProjectWarning?._id })
         },
         onSuccess: (data: any) => {
-            console.log(data)
+            setDeleteProjectWarning({ _id: "", warning: false })
+            setAlertPopup({
+                show: true,
+                message: "Project deleted successfully",
+                type: "success"
+            })
+            setTimeout(() => {
+                refetch();
+            }, 2000);
         },
-        onError: (err) => {
+        onError: (err: any) => {
             console.log(err)
+            setAlertPopup({
+                show: true,
+                message: err?.response?.data?.message || "Failed to delete project",
+                type: "error"
+            })
         }
     })
 
@@ -73,7 +88,18 @@ export function Projects({ projects }: { projects: Array<any> }) {
 
     return (
         <>
-            <SearchBar setSearchValue={setSearchValue} projectsLength={projects.length}/>
+            <SearchBar
+                setSearchValue={setSearchValue}
+                projectsLength={projects.length}
+                setAddProjectForm={setAddProjectForm}
+            />
+            {addProjectForm &&
+                <AddProjectForm
+                    setAddProjectForm={setAddProjectForm}
+                    setAlertPopup={setAlertPopup}
+                    refetch={refetch}
+                />
+            }
             <section className="w-full mt-8">
                 {/* Warning Popup */}
                 {deleteProjectWarning.warning &&
@@ -92,6 +118,7 @@ export function Projects({ projects }: { projects: Array<any> }) {
                         })}
                         projectId={updateProjectForm.projectId}
                         setAlertPopup={setAlertPopup}
+                        refetch={refetch}
                     />
                 }
                 {projectDetails.show &&

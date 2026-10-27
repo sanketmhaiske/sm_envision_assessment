@@ -1,6 +1,6 @@
 'use client'
 import { WarningPopup } from "@/components/common/WarningPopup"
-import { deleteTask, updateTaskStatusChange } from "@/hook/api"
+import { deleteTask } from "@/hook/axiosClient"
 import { Icon } from "@iconify/react"
 import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
@@ -34,6 +34,9 @@ export function TaskTable({ projectTasks, refetch, setAddTaskForm }: { projectTa
                 type: "success"
             })
             setDeleteTaskWarning({ _id: "", warning: false })
+            setTimeout(() => {
+                refetch();
+            }, 2000);
         },
         onError: (err: any) => {
             setAlertPopup({

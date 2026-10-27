@@ -24,7 +24,7 @@ export function AlertPopup({ close, message, alertType }: WarningPopupProps) {
                         )}
                         {alertType === 'success' && (
                             <Icon
-                                icon="clarity:success-standard-line"
+                                icon="akar-icons:circle-check-fill"
                                 width={24}
                                 height={24}
                                 className="text-green-500"
@@ -39,7 +39,7 @@ export function AlertPopup({ close, message, alertType }: WarningPopupProps) {
                     <Button
                         text="Close"
                         onClick={close}
-                        className="bg-gray-300"
+                        className="bg-gray-300 w-max"
                     />
                 </div>
             </div>

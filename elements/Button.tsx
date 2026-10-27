@@ -13,7 +13,7 @@ type ButtonTypes = {
 
 export function Button({ text, className, type, onClick, disabled, icon }: ButtonTypes) {
     return (
-        <div className={`flex items-center w-max rounded-md justify-center gap-2 p-2 px-4 text-sm duration-200 ${disabled ? 'opacity-70 cursor-not-allowed' : 'opacity-100 cursor-pointer'} ${className}`}>
+        <div className={`flex items-center w-full rounded-md justify-center gap-2 p-2 px-4 text-sm duration-200 ${disabled ? 'opacity-70 cursor-not-allowed' : 'opacity-100 cursor-pointer'} ${className}`}>
             {icon &&
                 <Icon
                     icon={icon}

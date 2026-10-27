@@ -1,5 +1,5 @@
 'use client'
-import { getProjectTasks } from "@/hook/api";
+import { getProjectTasks } from "@/hook/axiosClient";
 import { TaskCard } from "../components/TaskCard";
 import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
@@ -22,7 +22,7 @@ export default function Page() {
     }, [])
 
 
-    const { data: tasks, isLoading, isError, refetch } = useQuery({
+    const { data: tasks, isLoading, refetch } = useQuery({
         queryKey: ["project_tasks", projectId],
         queryFn: async () => await getProjectTasks(projectId)
     });
@@ -30,7 +30,7 @@ export default function Page() {
     const [addTaskForm, setAddTaskForm] = useState(false)
 
     return (
-        <section>
+        <section className="mb-16">
             <div className="flex flex-col">
                 <h3 className="h3 text-white">Project Tasks </h3>
                 <small className="text-gray-200">Track and manage your team's tasks.</small>

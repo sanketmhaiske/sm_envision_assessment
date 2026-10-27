@@ -1,26 +1,27 @@
 'use client'
-import { AddProjectForm } from "@/app/dashboard/components/AddProjectForm";
-import { AlertPopup } from "@/components/common/AlertPopup";
+// import { AddProjectForm } from "@/app/dashboard/components/AddProjectForm";
+// import { AlertPopup } from "@/components/common/AlertPopup";
 import { Button } from "@/elements/Button";
 import { Input } from "@/elements/Input";
 import { Icon } from "@iconify/react";
-import { useState } from "react";
+// import { useState } from "react";
 
-export function SearchBar({ setSearchValue, projectsLength }: { setSearchValue: (value: string) => void, projectsLength: number }) {
-    const [addProjectForm, setAddProjectForm] = useState(false)
-    const [alertPopup, setAlertPopup] = useState({
-        show: false,
-        message: "",
-        type: ''
-    });
+type SearchBarProps = {
+    setSearchValue: (value: string) => void,
+    projectsLength: number
+    setAddProjectForm: (value: boolean) => void
+}
+
+export function SearchBar({ setSearchValue, projectsLength, setAddProjectForm }: SearchBarProps) {
+    // const [alertPopup, setAlertPopup] = useState({
+    //     show: false,
+    //     message: "",
+    //     type: ''
+    // });
     return (
         <>
-            {addProjectForm &&
-                <AddProjectForm
-                    setAddProjectForm={setAddProjectForm}
-                    setAlertPopup={setAlertPopup}
-                />}
-            {alertPopup.show &&
+            
+            {/* {alertPopup.show &&
                 <AlertPopup
                     close={() => setAlertPopup({
                         show: false,
@@ -30,7 +31,7 @@ export function SearchBar({ setSearchValue, projectsLength }: { setSearchValue: 
                     message={alertPopup.message}
                     alertType={alertPopup.type}
                 />
-            }
+            } */}
             <div className="flex items-center justify-between mt-8">
                 <div className="flex items-center gap-2">
                     <Input
@@ -47,7 +48,7 @@ export function SearchBar({ setSearchValue, projectsLength }: { setSearchValue: 
                 <Button
                     text={<><Icon icon="akar-icons:plus" width={16} height={16} /> New Project</>}
                     icon=""
-                    className="bg-[#FFE288] text-[#1D1D1D] font-semibold"
+                    className="bg-[#FFE288] text-[#1D1D1D] font-semibold w-max"
                     onClick={() => setAddProjectForm(true)}
                 />
             </div>

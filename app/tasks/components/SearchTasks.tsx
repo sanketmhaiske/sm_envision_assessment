@@ -31,7 +31,7 @@ export function SearchTask({ setAddTaskForm, setSearchValue, projectTasksLength 
                 <Button
                     text={<><Icon icon="akar-icons:plus" width={16} height={16} />New Task</>}
                     icon=""
-                    className="bg-[#FFE288] text-[#1D1D1D] font-semibold"
+                    className="bg-[#FFE288] text-[#1D1D1D] font-semibold w-max"
                     onClick={() => setAddTaskForm(true)}
                 />
             </div>
