@@ -1,7 +1,12 @@
 ## Project Management Dashboard
 
 ##  🟢 Clone the repository.
+
 https://github.com/sanketmhaiske/sm_envision_assessment
+
+##  🟢 Online Url.
+
+https://sm-envision-assessment.vercel.app
 
 
 ##  🟢 Installation
@@ -34,3 +39,23 @@ Password - Envidian@2026
 ##  🟢 Tech Stack
 
 Next.js · TypeScript · MongoDB · Mongoose · JWT
+
+##  🟢 Features
+
+- Authentication
+- Dashboard
+- Project Management
+- Project Filtering
+- Task Management
+- Task Status Tracking
+- Deadline Management
+- Responsive UI
+
+
+##  🟢 Credits
+
+# UI Design and Development 
+
+- Sanket Mhaiske
+
+- Online date - 28 Oct 2026

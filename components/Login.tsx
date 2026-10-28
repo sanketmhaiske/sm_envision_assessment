@@ -110,6 +110,7 @@ export default function Login() {
                     type="submit"
                     className="mt-6 w-full rounded-lg bg-[#FFE288]"
                     text={loginMutation.isPending ? "Logging in..." : "Access Workspace"}
+                    disabled={loginMutation.isPending}
                 />
 
                 <small className="mt-5 text-center text-xs text-[#95959F] mx-auto flex justify-center">
