@@ -59,3 +59,8 @@ Next.js · TypeScript · MongoDB · Mongoose · JWT
 - Sanket Mhaiske
 
 - Online date - 28 Oct 2026
+
+
+##  🟢 AI tools
+
+I used ChatGPT to assist with implementation guidance, debugging, and code improvements. I validated the code by running the application locally, testing the main features and API endpoints, and checking error handling and responsiveness.
