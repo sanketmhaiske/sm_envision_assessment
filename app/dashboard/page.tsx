@@ -1,5 +1,4 @@
 'use client'
-import { useEffect, useState } from "react";
 import { ActiveProjects } from "./components/ActiveProjects";
 import { Card } from "./components/Card";
 import { getProjects, getAllTasks } from "@/hook/axiosClient";
@@ -55,7 +54,6 @@ export default function Page() {
                     bgColor="#F09A69"
                 />
             </div>
-
             <ActiveProjects
                 activeProjects={projects?.filter((p: any) => p.status === "Active") || []}
                 refetch={refetch}

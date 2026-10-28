@@ -148,9 +148,12 @@ export function ActiveProjects({ activeProjects, refetch }: { activeProjects: Ar
                     </thead>
                     <tbody>
                         {activeProjects.map((project: any) => (
-                            <tr className="text-sm text-white" key={project._id}>
-                                <td className="p-2 px-4 py-4">
-                                    <Link href={`/tasks/${project._id}?project_title=${project.title}`}>
+                            <tr className="text-sm text-white hover:bg-[#201c25] duration-200"
+                                key={project._id}>
+                                <td className="p-2 px-4 py-4 hover:text-[#FFE288]">
+                                    <Link
+                                        className="duration-200 font-semibold text-sm"
+                                        href={`/tasks/${project._id}?project_title=${project.title}`}>
                                         {project.title}
                                     </Link>
                                 </td>
@@ -164,7 +167,16 @@ export function ActiveProjects({ activeProjects, refetch }: { activeProjects: Ar
                                         {project.status}
                                     </span>
                                 </td>
-                                <td>{project.priority}</td>
+                                <td>
+                                    <span
+                                        className={`bg-[#282038] text-xs px-2 py-1 rounded-md  
+                                                ${project.priority === "High" && 'text-[#b6020e]'} 
+                                                ${project.priority === "Medium" && 'text-[#af6a09]'} 
+                                                ${project.priority === "Low" && 'text-[#019810]'} 
+                                            `}>
+                                        {project.priority}
+                                    </span>
+                                </td>
                                 <td>{formatDate(project.deadline)}</td>
                                 <td>
                                     <div className="flex gap-2 items-center">

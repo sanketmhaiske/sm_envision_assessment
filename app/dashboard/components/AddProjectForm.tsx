@@ -67,7 +67,7 @@ export function AddProjectForm({ setAddProjectForm, setAlertPopup, refetch }: Ad
 
     return (
         <section className="fixedBG">
-            <div className="bg-[#18151C] border border-[#353540] p-4 sm:p-6 rounded-md relative m-2">
+            <div className="bg-[#222225] border border-[#353540] p-4 sm:p-6 rounded-md relative m-2">
                 <div className="flex flex-col">
                     <h5 className="text-white h4 bricolage font-semibold">
                         Add Project

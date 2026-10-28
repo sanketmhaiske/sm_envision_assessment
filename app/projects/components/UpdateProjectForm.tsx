@@ -69,7 +69,11 @@ export function UpdateProjectForm({ setUpdateProjectForm, projectId , setAlertPo
             }, 2000);
         },
         onError: (error: any) => {
-            
+            setAlertPopup({
+                show: true,
+                message: error?.response?.data?.message || "Failed to update project",
+                type: "error"
+            })
         }
     })
 

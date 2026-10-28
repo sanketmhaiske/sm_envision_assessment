@@ -127,9 +127,19 @@ export function TaskTable({ projectTasks, refetch, setAddTaskForm }: { projectTa
                         </thead>
                         <tbody>
                             {filterProjectTask?.map((task: any) => (
-                                <tr className="text-sm text-white" key={task._id}>
-                                    <td className="p-2 px-4 py-4">{task.title}</td>
-                                    <td className="">{task.status}</td>
+                                <tr className="text-sm text-white hover:bg-[#201c25] duration-200" key={task._id}>
+                                    <td className="p-2 px-4 py-4 hover:text-[#FFE288] duration-200 font-semibold text-sm">{task.title}</td>
+                                    <td className="">
+                                        <span
+                                            className={`bg-[#282038] text-xs px-2 py-1 rounded-md  
+                                            ${task.status === "Pending" && 'text-[#e0d500]'} 
+                                            ${task.status === "In Progress" && 'text-[#2a5bcc]'} 
+                                            ${task.status === "Completed" && 'text-[#49B38F]'} 
+                                            ${task.status === "Cancelled" && 'text-[#cf2305]'} 
+                                            `}>
+                                            {task.status}
+                                        </span>
+                                    </td>
                                     <td>
                                         <span
                                             className={`bg-[#282038] text-xs px-2 py-1 rounded-md  

@@ -30,12 +30,12 @@ export function WarningPopup({ proceed, cancel, message, loading }: WarningPopup
                     <Button
                         text={loading ? "Deleting..." : "Delete"}
                         onClick={proceed}
-                        className="bg-red-300 w-max"
+                        className="bg-red-300 w-max font-semibold"
                     />
                     <Button
                         text="Cancel"
                         onClick={cancel}
-                        className="bg-gray-300 w-max"
+                        className="bg-gray-300 w-max font-semibold"
                     />
                 </div>
             </div>
