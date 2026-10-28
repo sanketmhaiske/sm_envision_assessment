@@ -57,7 +57,7 @@ export default function TaskProgress({
 
     return (
         <div className="fixedBG">
-            <div className="w-full max-w-sm rounded-xl border border-gray-700 bg-[#222225] p-5">
+            <div className="w-full max-w-sm rounded-xl border border-gray-700 bg-[#222225] p-5 m-4">
                 <h2 className="text-lg font-semibold text-white">
                     Change Task Status
                 </h2>

@@ -7,7 +7,6 @@ import { getProjectDetails, updateProject } from "@/hook/axiosClient";
 import { useMutation } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
-import { AlertPopup } from "@/components/common/AlertPopup";
 
 
 type ProjectFormProps = {

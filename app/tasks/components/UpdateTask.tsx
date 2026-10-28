@@ -3,12 +3,11 @@ import { Button } from "@/elements/Button";
 import { Input } from "@/elements/Input";
 import { Select } from "@/elements/select";
 import { TextArea } from "@/elements/TextArea";
-import { addTask, getTaskDetails, updateTask } from "@/hook/axiosClient";
+import { getTaskDetails, updateTask } from "@/hook/axiosClient";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import { AlertPopup } from "@/components/common/AlertPopup"
-import { set } from "mongoose";
 
 type TaskFormProps = {
     setUpdateTaskForm: ({ taskId, show }: { taskId: string, show: boolean }) => void,

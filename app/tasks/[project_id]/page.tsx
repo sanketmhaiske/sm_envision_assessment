@@ -35,16 +35,18 @@ export default function Page() {
                 <h2 className="h2 text-white font-semibold bricolage">Project Tasks </h2>
                 <small className="text-gray-400">Track and manage your team's tasks.</small>
             </div>
-            <div className="flex items-center gap-2 mt-8">
-                <figure>
+            <div className="flex sm:items-center gap-2 mt-8">
+                <figure className="mt-0.5">
                     <Icon
                         icon="octicon:project-check-24"
                         width={20}
                         height={20}
-                        className="text-[#7F9EF1]"
+                        className="text-[#FFE288]"
                     />
                 </figure>
-                <span className="text-sm text-gray-300 hanken">{projectTitle}</span>
+                <span className="text-gray-300 hanken">
+                    <strong className="text-[#FFE288]">Project:</strong>  {projectTitle}
+                </span>
             </div>
             <div className="mt-8 flex items-center flex-wrap gap-8">
                 <TaskCard

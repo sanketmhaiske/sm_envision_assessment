@@ -56,14 +56,6 @@ export default function ProjectDetailsPopup({
                             {project.title}
                         </h6>
                     </div>
-
-                    {/* <button
-                        onClick={onClose}
-                        aria-label="Close popup"
-                        className="text-xl text-gray-400 hover:text-white cursor-pointer"
-                    >
-                        &times;
-                    </button> */}
                 </div>
 
                 <small className="mt-2 text-xs text-gray-400 flex">

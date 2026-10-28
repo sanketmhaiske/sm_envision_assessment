@@ -2,7 +2,7 @@ import connectDB from "@/lib/mongoose";
 import { NextResponse } from "next/server";
 import { verifyToken } from "@/lib/jwtAuth";
 import UserModel from "@/db/credential";
-import jwt, { JwtPayload } from "jsonwebtoken";
+import { JwtPayload } from "jsonwebtoken";
 
 
 export async function POST(req: Request) {

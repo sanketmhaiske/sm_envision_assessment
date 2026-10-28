@@ -4,6 +4,9 @@
   --body: #04010A
 }
 
+html{
+  scroll-behavior: smooth;
+}
 
 body {
   background: var(--body);
@@ -11,7 +14,6 @@ body {
 }
 
 /* Fonts  */
-
 .bricolage {
   font-family: var(--font-bricolage);
 }
@@ -25,7 +27,6 @@ figure {
 }
 
 /* Headings  */
-
 .h1 {
   font-size: clamp(32px, 4vw, 48px);
 }

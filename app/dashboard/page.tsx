@@ -21,9 +21,9 @@ export default function Page() {
         <section className="w-full mb-16">
             <div>
                 <h2 className="text-white h1 bricolage font-semibold">
-                    Welcome back, Sanket
+                    Welcome back, Sanket 👋
                 </h2>
-                <small className="text-gray-50 text-sm">
+                <small className="text-gray-200 text-sm">
                     Here is quick overview of your workspace today
                 </small>
             </div>

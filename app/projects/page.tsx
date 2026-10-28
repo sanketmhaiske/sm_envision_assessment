@@ -2,7 +2,6 @@
 import { Projects } from "./components/Projects";
 import { getProjects } from "@/hook/axiosClient";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
 
 
 export default function Page() {
