@@ -16,7 +16,7 @@ export default function Page() {
                 <h2 className="h2 text-white bricolage">Projects</h2>
                 <small className="text-gray-400 text-xs">Manage and track all your projects.</small>
             </div>
-            {isLoading && <p>Loading...</p>}
+            {isLoading && <p className="text-white mt-16 flex justify-center font-semibold bricolage">Getting Projects...</p>}
             {projects?.length && <Projects projects={projects} refetch={refetch} />}
         </section>
     )

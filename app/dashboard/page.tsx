@@ -6,8 +6,8 @@ import { useQuery } from "@tanstack/react-query";
 
 
 export default function Page() {
-   
-    const { data: projects, isLoading, refetch } = useQuery({
+
+    const { data: projects, isLoading: projectsLoading, refetch } = useQuery({
         queryKey: ["projects"],
         queryFn: async () => await getProjects()
     });
@@ -54,10 +54,13 @@ export default function Page() {
                     bgColor="#F09A69"
                 />
             </div>
-            <ActiveProjects
-                activeProjects={projects?.filter((p: any) => p.status === "Active") || []}
-                refetch={refetch}
-            />
+            {projectsLoading ?
+                <p className="text-white mt-16 flex justify-center font-semibold bricolage">Getting Projects...</p> :
+                <ActiveProjects
+                    activeProjects={projects?.filter((p: any) => p.status === "Active") || []}
+                    refetch={refetch}
+                />
+            }
         </section>
     );
 
