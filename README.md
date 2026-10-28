@@ -58,7 +58,7 @@ Next.js · TypeScript · MongoDB · Mongoose · JWT
 
 - Sanket Mhaiske
 
-- Online date - 28 Oct 2026
+- Published on - 28 Oct 2026
 
 
 ##  🟢 AI tools
