@@ -1,4 +1,4 @@
-import ProjectModal from "@/db/project";
+import ProjectModel from "@/db/project";
 import connectDB from "@/lib/mongoose";
 import { NextResponse } from "next/server";
 import { validateProjectData } from "./validator";
@@ -11,11 +11,11 @@ async function handleGET(req: Request) {
     const reqType = searchParams.get("reqType")
     if (reqType === 'details') {
         const projectId = searchParams.get("projectId")
-        const project = await ProjectModal.findOne({ _id: projectId });
+        const project = await ProjectModel.findOne({ _id: projectId });
         return NextResponse.json({ success: true, result: project }, { status: 200 })
     }
     if (reqType === 'all') {
-        const projects = await ProjectModal.find();
+        const projects = await ProjectModel.find();
         return NextResponse.json({ success: true, result: projects }, { status: 200 })
     }
     return NextResponse.json({ success: false, message: "Invalid request type" }, { status: 400 })
@@ -26,7 +26,17 @@ async function handlePOST(req: Request) {
     const data = await req.json();
     const validateError = await validateProjectData(data);
     if (validateError) return NextResponse.json({ success: false, message: validateError }, { status: 400 })
-    const project = await ProjectModal.create(data);
+    // Check Duplicate
+    const existingProject = await ProjectModel.findOne({
+        title: { $regex: `^${data?.title.trim()}$`, $options: "i" },
+    });
+    if (existingProject) {
+        return NextResponse.json(
+            { success: false, message: "Project name already exists" },
+            { status: 409 }
+        );
+    }
+    const project = await ProjectModel.create(data);
     return NextResponse.json({ success: true, message: "Project created successfully", result: project }, { status: 200 })
 }
 
@@ -37,7 +47,7 @@ async function handlePUT(req: Request) {
     if (validateError) return NextResponse.json({ success: false, message: validateError }, { status: 400 })
 
     try {
-        const project = await ProjectModal.findByIdAndUpdate(data.projectId, data);
+        const project = await ProjectModel.findByIdAndUpdate(data.projectId, data);
         return NextResponse.json({ success: true, message: "Project updated successfully", result: project }, { status: 200 })
     } catch (error) {
         console.log(error)
@@ -51,7 +61,7 @@ async function handleDELETE(req: Request) {
     const projectId = data?._id;
     if (!projectId) return NextResponse.json({ success: false, message: "Invalid project id" }, { status: 400 });
     try {
-        const project = await ProjectModal.findByIdAndDelete(projectId);
+        const project = await ProjectModel.findByIdAndDelete(projectId);
         return NextResponse.json({ success: true, message: "Project deleted successfully", result: project }, { status: 200 })
     } catch (error) {
         console.log(error)

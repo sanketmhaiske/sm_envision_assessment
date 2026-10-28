@@ -33,6 +33,18 @@ async function handlePOST(req: Request) {
     const data = await req.json();
     const validationError = await validateTaskData(data);
     if (validationError) return NextResponse.json({ success: false, message: validationError }, { status: 400 })
+    // Check Duplicate
+    const existingTask = await TaskModel.findOne({
+        title: { $regex: `^${data?.title.trim()}$`, $options: "i" },
+    });
+
+    if (existingTask) {
+        return NextResponse.json(
+            { success: false, message: "Task name already exists" },
+            { status: 409 }
+        );
+    }
+
     try {
         const task = await TaskModel.create(data);
         return NextResponse.json({ success: true, message: "Task created successfully", result: task }, { status: 200 })
@@ -43,7 +55,6 @@ async function handlePOST(req: Request) {
 }
 
 // Delete task
-
 async function handleDELETE(req: Request) {
     await connectDB();
     const data = await req.json();
@@ -51,7 +62,6 @@ async function handleDELETE(req: Request) {
         const task = await TaskModel.findByIdAndDelete(data._id);
         return NextResponse.json({ success: true, message: "Task deleted successfully", result: task }, { status: 200 })
     } catch (error) {
-        console.log(error)
         return NextResponse.json({ success: false, message: "Failed to delete task" }, { status: 400 })
     }
 }

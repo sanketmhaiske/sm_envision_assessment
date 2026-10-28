@@ -76,6 +76,9 @@ select:-webkit-autofill {
   z-index: +100;
 }
 
-input[type="date"] {
-  color-scheme: light;
+/* Calendar Icon color  */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 1;
+  cursor: pointer;
 }

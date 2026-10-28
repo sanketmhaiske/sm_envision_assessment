@@ -130,7 +130,16 @@ export function TaskTable({ projectTasks, refetch, setAddTaskForm }: { projectTa
                                 <tr className="text-sm text-white" key={task._id}>
                                     <td className="p-2 px-4 py-4">{task.title}</td>
                                     <td className="">{task.status}</td>
-                                    <td>{task.priority}</td>
+                                    <td>
+                                        <span
+                                            className={`bg-[#282038] text-xs px-2 py-1 rounded-md  
+                                                ${task.priority === "High" && 'text-[#b6020e]'} 
+                                                ${task.priority === "Medium" && 'text-[#af6a09]'} 
+                                                ${task.priority === "Low" && 'text-[#019810]'} 
+                                            `}>
+                                            {task.priority}
+                                        </span>
+                                    </td>
                                     <td>{formatDate(task.deadline)}</td>
                                     <td>
                                         <div className="flex gap-2 items-center">

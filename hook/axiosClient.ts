@@ -58,7 +58,7 @@ export const getProjectTasks = async (projectId: string) => {
 
 export const postProject = async (data: any) => {
     const res = await axiosClientWithToken.post(`/api/projects`, data)
-    return res?.data?.result;
+    return res?.data;
 }
 
 export const deleteProject = async (data: any) => {
@@ -80,7 +80,7 @@ export const updateProject = async (data: any) => {
 
 export const addTask = async (data: any) => {
     const res = await axiosClientWithToken.post(`/api/tasks`, data)
-    return res;
+    return res?.data;
 }
 
 export const deleteTask = async (data: any) => {

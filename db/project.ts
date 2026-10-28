@@ -37,6 +37,6 @@ const projectSchema = new Schema({
     }
 }, { timestamps: true })
 
-const ProjectModal = models.project || model('project', projectSchema);
-export default ProjectModal;
+const ProjectModel = models.project || model('project', projectSchema);
+export default ProjectModel;
 

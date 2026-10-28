@@ -7,11 +7,15 @@ import { useQuery } from "@tanstack/react-query";
 
 
 export default function Page() {
-    const [tasks, setTasks] = useState([]);
-
+   
     const { data: projects, isLoading, refetch } = useQuery({
         queryKey: ["projects"],
         queryFn: async () => await getProjects()
+    });
+
+    const { data: allTasks, isLoading: tasksLoading } = useQuery({
+        queryKey: ["all_tasks"],
+        queryFn: async () => await getAllTasks()
     });
 
     return (
@@ -41,13 +45,13 @@ export default function Page() {
                 <Card
                     title="Completed Tasks"
                     icon="fluent-mdl2:completed"
-                    value={tasks?.filter((t: any) => t.status === "Completed").length || 0}
+                    value={allTasks?.filter((t: any) => t.status === "Completed").length || 0}
                     bgColor="#FFE288"
                 />
                 <Card
                     title="Pending Tasks"
                     icon="iconoven:pending-clock-sharp"
-                    value={tasks?.filter((t: any) => t.status === "Pending").length || 0}
+                    value={allTasks?.filter((t: any) => t.status === "Pending").length || 0}
                     bgColor="#F09A69"
                 />
             </div>

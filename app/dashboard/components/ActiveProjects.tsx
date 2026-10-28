@@ -154,7 +154,16 @@ export function ActiveProjects({ activeProjects, refetch }: { activeProjects: Ar
                                         {project.title}
                                     </Link>
                                 </td>
-                                <td className="">{project.status}</td>
+                                <td className="">
+                                    <span
+                                        className={`bg-[#282038] text-xs px-2 py-1 rounded-md  
+                                            ${project.status === "Active" && 'text-[#3D61B6]'} 
+                                            ${project.status === "Completed" && 'text-[#49B38F]'} 
+                                            ${project.status === "On Hold" && 'text-[#B58022]'} 
+                                            `}>
+                                        {project.status}
+                                    </span>
+                                </td>
                                 <td>{project.priority}</td>
                                 <td>{formatDate(project.deadline)}</td>
                                 <td>

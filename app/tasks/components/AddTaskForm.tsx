@@ -66,7 +66,7 @@ export function AddTaskForm({ setAddTaskForm, projectId, refetch }: TaskFormProp
         onError: (error: any) => {
             setAlertPopup({
                 show: true,
-                message: error?.message || "Failed to add task",
+                message: error?.response?.data?.message || "Failed to add task",
                 type: "error"
             })
         }
@@ -78,7 +78,6 @@ export function AddTaskForm({ setAddTaskForm, projectId, refetch }: TaskFormProp
                 <AlertPopup
                     close={() => {
                         setAlertPopup({ show: false, message: "", type: "" })
-                        setAddTaskForm(false)
                     }}
                     message={alertPopup.message}
                     alertType={alertPopup.type}

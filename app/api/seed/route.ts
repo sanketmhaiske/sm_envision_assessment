@@ -1,6 +1,6 @@
 import { seedProjects, seedTasks } from "./seeddata";
 import connectDB from "@/lib/mongoose";
-import ProjectModal from "@/db/project";
+import ProjectModel from "@/db/project";
 import TaskModel from "@/db/task";
 import { NextResponse } from "next/server";
 
@@ -9,10 +9,10 @@ export async function POST(req: Request) {
     await connectDB();
     try {
         if (seedProjects.length) {
-            const projects = await ProjectModal.find();
+            const projects = await ProjectModel.find();
             if (!projects.length) {
                 await Promise.all(seedProjects.map(async ({ id, ...project }) => {
-                    await ProjectModal.create(({
+                    await ProjectModel.create(({
                         ...project,
                         seedId: id,
                         deadline: new Date(project.deadline),
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
         if (seedTasks.length) {
             const tasks = await TaskModel.find();
             if (!tasks.length) {
-                const projects = await ProjectModal.find();
+                const projects = await ProjectModel.find();
                 const projectMap = new Map(
                     projects.map((p) => [p.seedId, p._id])
                 );

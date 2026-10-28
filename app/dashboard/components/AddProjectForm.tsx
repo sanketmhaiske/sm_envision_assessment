@@ -59,8 +59,8 @@ export function AddProjectForm({ setAddProjectForm, setAlertPopup, refetch }: Ad
             console.log(error)
             setAlertPopup({
                 show: true,
-                message: error?.message || "Project added successfully",
-                type: "success"
+                message: error?.response?.data?.message || "Failed to create project",
+                type: "error"
             })
         }
     })

@@ -54,10 +54,32 @@ const MobileMenu = ({ setOpen }: { setOpen: (open: boolean) => void }) => {
     return (
         <div className="w-40 h-max bg-[#222225] rounded-md absolute top-12 right-4 p-4" ref={ref}>
             <div className="flex flex-col gap-2">
-                <Link href="/dashboard">Dashboard</Link>
-                <Link href="/projects">Projects</Link>
-                <Link href="/"
-                    onClick={() => localStorage.removeItem('token')}>
+                <Link href="/dashboard" className="flex items-center gap-2 hover:text-[#ffe288]">
+                    <Icon
+                        icon="material-symbols:dashboard"
+                        width={16}
+                        height={16}
+                    />
+                    Dashboard
+                </Link>
+                <Link href="/projects" className="flex items-center gap-2 hover:text-[#ffe288]">
+                    <Icon
+                        icon="ic:outline-workspaces"
+                        width={16}
+                        height={16}
+                    />
+                    Projects
+                </Link>
+                <Link
+                    href="/"
+                    onClick={() => localStorage.removeItem('token')}
+                    className="flex items-center gap-2 hover:text-[#ffe288]"
+                >
+                    <Icon
+                        icon={'hugeicons:logout-circle-02'}
+                        width={16}
+                        height={16}
+                    />
                     Logout
                 </Link>
             </div>
