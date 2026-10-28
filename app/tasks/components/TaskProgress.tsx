@@ -47,7 +47,6 @@ export default function TaskProgress({
 
         },
         onError: (err: any) => {
-            console.log(err)
             setAlertPopup({
                 show: true,
                 message: err?.message || "Failed to update task status",

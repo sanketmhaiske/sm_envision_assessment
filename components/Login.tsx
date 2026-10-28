@@ -1,4 +1,3 @@
-
 "use client";
 import { Button } from "@/elements/Button";
 import { login } from "@/hook/axiosClient";
@@ -25,13 +24,11 @@ export default function Login() {
         },
         onSuccess: (data: any) => {
             if (data) {
-                console.log(data, 'data')
                 localStorage.setItem("token", data?.data?.token);
                 router.push("/dashboard");
             }
         },
         onError: (error: any) => {
-            console.log(error)
             setAlertPopup({
                 show: true,
                 message: error?.response?.data?.message || "Invalid credentials",

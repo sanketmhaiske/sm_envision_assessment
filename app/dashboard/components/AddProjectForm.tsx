@@ -56,7 +56,7 @@ export function AddProjectForm({ setAddProjectForm, setAlertPopup, refetch }: Ad
             }, 2000);
         },
         onError: (error: any) => {
-            console.log(error)
+            
             setAlertPopup({
                 show: true,
                 message: error?.response?.data?.message || "Failed to create project",

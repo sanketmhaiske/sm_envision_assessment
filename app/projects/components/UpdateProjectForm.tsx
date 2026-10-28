@@ -69,7 +69,7 @@ export function UpdateProjectForm({ setUpdateProjectForm, projectId , setAlertPo
             }, 2000);
         },
         onError: (error: any) => {
-            console.log(error)
+            
         }
     })
 

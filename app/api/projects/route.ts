@@ -50,7 +50,6 @@ async function handlePUT(req: Request) {
         const project = await ProjectModel.findByIdAndUpdate(data.projectId, data);
         return NextResponse.json({ success: true, message: "Project updated successfully", result: project }, { status: 200 })
     } catch (error) {
-        console.log(error)
         return NextResponse.json({ success: false, message: "Failed to update project" }, { status: 400 })
     }
 }
@@ -64,7 +63,6 @@ async function handleDELETE(req: Request) {
         const project = await ProjectModel.findByIdAndDelete(projectId);
         return NextResponse.json({ success: true, message: "Project deleted successfully", result: project }, { status: 200 })
     } catch (error) {
-        console.log(error)
         return NextResponse.json({ success: false, message: "Failed to delete project" }, { status: 400 })
     }
 }

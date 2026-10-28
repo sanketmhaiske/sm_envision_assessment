@@ -76,7 +76,6 @@ export function UpdateTaskForm({ setUpdateTaskForm, taskId, projectId, refetch }
             }, 2000);
         },
         onError: (err: any) => {
-            console.log(err)
             setAlertPopup({
                 show: true,
                 message: err?.response?.data?.message || "Failed to update task",

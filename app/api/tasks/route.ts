@@ -49,7 +49,6 @@ async function handlePOST(req: Request) {
         const task = await TaskModel.create(data);
         return NextResponse.json({ success: true, message: "Task created successfully", result: task }, { status: 200 })
     } catch (error) {
-        console.log(error)
         return NextResponse.json({ success: false, message: "Failed to create task" }, { status: 400 })
     }
 }
@@ -81,7 +80,6 @@ async function handlePUT(req: Request) {
             const task = await TaskModel.findByIdAndUpdate(taskId, { status: newStatus });
             return NextResponse.json({ success: true, message: "Task status updated successfully", result: task }, { status: 200 })
         } catch (error) {
-            console.log(error)
             return NextResponse.json({ success: false, message: "Failed to update task status" }, { status: 400 })
         }
     }
@@ -93,7 +91,7 @@ async function handlePUT(req: Request) {
             const task = await TaskModel.findByIdAndUpdate(data._id, data);
             return NextResponse.json({ success: true, message: "Task updated successfully", result: task }, { status: 200 })
         } catch (error) {
-            console.log(error)
+            
             return NextResponse.json({ success: false, message: "Failed to update task" }, { status: 400 })
         }
     }
