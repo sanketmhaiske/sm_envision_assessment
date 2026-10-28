@@ -100,6 +100,7 @@ export function AddProjectForm({ setAddProjectForm, setAlertPopup, refetch }: Ad
                         name="description"
                         placeholder="Enter project description"
                         className="h-30 resize-none"
+                        label="Project Description"
                         onChange={handleChange}
                     />
                     <div className="grid grid-cols-2 gap-1 sm:gap-4">

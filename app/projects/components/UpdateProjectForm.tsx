@@ -111,7 +111,7 @@ export function UpdateProjectForm({ setUpdateProjectForm, projectId , setAlertPo
                     <TextArea
                         name="description"
                         placeholder="Enter project description"
-                        label="Description"
+                        label="Project Description"
                         className="h-30 resize-none"
                         onChange={handleChange}
                         defaultValue={form?.description}
