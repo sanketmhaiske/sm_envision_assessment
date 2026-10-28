@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/elements/Button";
+import { formatDate } from "@/utils/formatDate";
 
 type Project = {
     title: string;
@@ -26,7 +27,7 @@ export default function ProjectDetailsPopup({
         {
             label: "Deadline",
             value: project.deadline
-                ? new Date(project.deadline).toLocaleDateString()
+                ? formatDate(project.deadline)
                 : "Not set",
         },
     ];
@@ -56,13 +57,13 @@ export default function ProjectDetailsPopup({
                         </h6>
                     </div>
 
-                    <button
+                    {/* <button
                         onClick={onClose}
                         aria-label="Close popup"
                         className="text-xl text-gray-400 hover:text-white cursor-pointer"
                     >
                         &times;
-                    </button>
+                    </button> */}
                 </div>
 
                 <small className="mt-2 text-xs text-gray-400 flex">

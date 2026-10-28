@@ -15,12 +15,11 @@ export function QueryProvider({ children }: { children: React.ReactNode }) {
                 client={queryClient}
             >
                 {pathname == "/" ? <>  {children} </> :
-
                     <div className="flex">
                         <Sidebar />
-                        <div className="flex flex-col ml-30 w-[calc(100%-150px)]">
+                        <div className="flex flex-col container mx-auto px-8 lg:px-0 lg:ml-30 w-full lg:w-[calc(100%-150px)] overflow-hidden">
                             <Header />
-                            <div className="mt-24">
+                            <div className="mt-8 lg:mt-24">
                                 {children}
                             </div>
                         </div>

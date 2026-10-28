@@ -12,7 +12,7 @@ type WarningPopupProps = {
 export function WarningPopup({ proceed, cancel, message, loading }: WarningPopupProps) {
     return (
         <div className="fixedBG">
-            <div className="flex flex-col gap-4 bg-[#1D1D1D] p-6 rounded-md max-w-100">
+            <div className="flex flex-col gap-4 bg-[#222225] p-6 rounded-md max-w-100 m-4">
                 <div className="flex items-start gap-4">
                     <figure className="bg-red-200 p-2 rounded-full">
                         <Icon

@@ -20,38 +20,38 @@ body {
   font-family: var(--font-hanken);
 }
 
-figure{
+figure {
   cursor: pointer !important;
 }
 
 /* Headings  */
 
 .h1 {
-  font-size: 48px;
+  font-size: clamp(32px, 4vw, 48px);
 }
 
 .h2 {
-  font-size: 40px;
+  font-size: clamp(28px, 3.3vw, 40px);
 }
 
 .h3 {
-  font-size: 33px;
+  font-size: clamp(24px, 2.75vw, 33px);
 }
 
 .h4 {
-  font-size: 28px;
+  font-size: clamp(22px, 2.3vw, 28px);
 }
 
 .h5 {
-  font-size: 23px;
+  font-size: clamp(19px, 1.9vw, 23px);
 }
 
 .h6 {
-  font-size: 19px;
+  font-size: clamp(17px, 1.6vw, 19px);
 }
 
 p {
-  font-size: 16px;
+  font-size: clamp(14px, 1.1vw, 16px);
 }
 
 input:-webkit-autofill,
@@ -74,4 +74,8 @@ select:-webkit-autofill {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: +100;
+}
+
+input[type="date"] {
+  color-scheme: light;
 }

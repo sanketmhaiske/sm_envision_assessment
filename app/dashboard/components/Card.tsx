@@ -14,7 +14,7 @@ export const Card = ({
     bgColor,
 }: CardProps) => {
     return (
-        <div className="flex flex-col justify-between bg-[#1D1D1D] rounded-md w-50 h-32 p-4">
+        <div className="flex flex-col justify-between bg-[#1D1D1D] rounded-md lg:w-50 h-32 p-4">
             <div className="flex items-start justify-between">
                 <figure
                     style={{ background: bgColor }}
@@ -25,11 +25,11 @@ export const Card = ({
                         height={24}
                     />
                 </figure>
-                <h1 className="h1 font-semibold hanken text-white m-0 leading-none">
+                <h1 className="text-5xl sm:h1 font-semibold hanken text-white m-0 leading-none">
                     {value}
                 </h1>
             </div>
-            <h6 className="text-xl text-white font-semibold">
+            <h6 className="h6 text-white font-semibold">
                 {title}
             </h6>
         </div>

@@ -24,7 +24,7 @@ export function Button({ text, className, type, onClick, disabled, icon }: Butto
             <button
                 disabled={disabled}
                 onClick={onClick}
-                className={`text-nowrap flex items-center gap-1 ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
+                className={`text-nowrap w-full justify-center flex items-center gap-1 ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
                 {text}
             </button>
         </div>

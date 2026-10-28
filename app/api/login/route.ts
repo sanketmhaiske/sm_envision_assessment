@@ -1,6 +1,6 @@
 import connectDB from "@/lib/mongoose";
 import { NextResponse } from "next/server";
-import { verifyToken } from "@/hook/jwtAuth";
+import { verifyToken } from "@/lib/jwtAuth";
 import UserModel from "@/db/credential";
 import jwt, { JwtPayload } from "jsonwebtoken";
 

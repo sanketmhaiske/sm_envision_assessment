@@ -9,7 +9,7 @@ export function Sidebar() {
     const pathname = usePathname();
     const router = useRouter();
     return (
-        <div className="w-20 bg-[#151515] h-screen fixed left-0 flex flex-col items-center">
+        <div className="w-20 bg-[#151515] h-screen fixed left-0 hidden lg:flex flex-col items-center">
             <Link
                 href={'/dashboard'}
                 className="bg-[#353540] text-[#7F9EF1] rounded-full w-12 h-12 my-4 flex justify-center items-center">

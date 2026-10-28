@@ -67,7 +67,7 @@ export function AddProjectForm({ setAddProjectForm, setAlertPopup, refetch }: Ad
 
     return (
         <section className="fixedBG">
-            <div className="bg-[#18151C] border border-[#353540] p-6 rounded-md relative">
+            <div className="bg-[#18151C] border border-[#353540] p-4 sm:p-6 rounded-md relative m-2">
                 <div className="flex flex-col">
                     <h5 className="text-white h4 bricolage font-semibold">
                         Add Project
@@ -102,7 +102,7 @@ export function AddProjectForm({ setAddProjectForm, setAlertPopup, refetch }: Ad
                         className="h-30 resize-none"
                         onChange={handleChange}
                     />
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-1 sm:gap-4">
                         <Select
                             name="projectType"
                             placeholder="Select project type"

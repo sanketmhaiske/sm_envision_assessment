@@ -11,7 +11,7 @@ type WarningPopupProps = {
 export function AlertPopup({ close, message, alertType }: WarningPopupProps) {
     return (
         <div className="fixedBG z-100">
-            <div className="flex flex-col gap-4 bg-[#1D1D1D] p-6 rounded-md min-w-100 max-w-120">
+            <div className="flex flex-col gap-4 bg-[#222225] p-6 rounded-md sm:min-w-100 max-w-120 m-4">
                 <div className="flex items-start gap-4">
                     <figure className={`${alertType === 'error' && 'bg-red-100'} ${alertType === 'success' && 'bg-green-100'} p-2 rounded-full`}>
                         {alertType === 'error' && (

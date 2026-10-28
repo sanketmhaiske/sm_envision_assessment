@@ -2,9 +2,10 @@ import TaskModel from "@/db/task";
 import connectDB from "@/lib/mongoose";
 import { NextResponse } from "next/server";
 import { validateTaskData } from "./validator";
+import { userAuth } from "@/lib/userAuth";
 
 // GET /api/tasks
-export async function GET(req: Request) {
+async function handleGET(req: Request) {
     const { searchParams } = new URL(req.url);
     const reqType = searchParams.get("reqType")
     await connectDB();
@@ -27,7 +28,7 @@ export async function GET(req: Request) {
     return NextResponse.json({ success: false, message: "Invalid request type" }, { status: 400 })
 }
 
-export async function POST(req: Request) {
+async function handlePOST(req: Request) {
     await connectDB();
     const data = await req.json();
     const validationError = await validateTaskData(data);
@@ -43,7 +44,7 @@ export async function POST(req: Request) {
 
 // Delete task
 
-export async function DELETE(req: Request) {
+async function handleDELETE(req: Request) {
     await connectDB();
     const data = await req.json();
     try {
@@ -55,7 +56,7 @@ export async function DELETE(req: Request) {
     }
 }
 
-export async function PUT(req: Request) {
+async function handlePUT(req: Request) {
     await connectDB();
     const { searchParams } = new URL(req.url);
     const reqType = searchParams.get("reqType")
@@ -87,3 +88,8 @@ export async function PUT(req: Request) {
         }
     }
 }
+
+export const GET = userAuth(handleGET)
+export const POST = userAuth(handlePOST)
+export const PUT = userAuth(handlePUT)
+export const DELETE = userAuth(handleDELETE)

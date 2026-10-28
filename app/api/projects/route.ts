@@ -2,9 +2,10 @@ import ProjectModal from "@/db/project";
 import connectDB from "@/lib/mongoose";
 import { NextResponse } from "next/server";
 import { validateProjectData } from "./validator";
+import { userAuth } from "@/lib/userAuth";
 
 
-export async function GET(req: Request) {
+async function handleGET(req: Request) {
     await connectDB();
     const { searchParams } = new URL(req.url);
     const reqType = searchParams.get("reqType")
@@ -20,7 +21,7 @@ export async function GET(req: Request) {
     return NextResponse.json({ success: false, message: "Invalid request type" }, { status: 400 })
 }
 
-export async function POST(req: Request) {
+async function handlePOST(req: Request) {
     await connectDB();
     const data = await req.json();
     const validateError = await validateProjectData(data);
@@ -29,7 +30,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true, message: "Project created successfully", result: project }, { status: 200 })
 }
 
-export async function PUT(req: Request) {
+async function handlePUT(req: Request) {
     await connectDB();
     const data = await req.json();
     const validateError = await validateProjectData(data);
@@ -44,7 +45,7 @@ export async function PUT(req: Request) {
     }
 }
 
-export async function DELETE(req: Request) {
+async function handleDELETE(req: Request) {
     await connectDB();
     const data = await req.json();
     const projectId = data?._id;
@@ -57,3 +58,8 @@ export async function DELETE(req: Request) {
         return NextResponse.json({ success: false, message: "Failed to delete project" }, { status: 400 })
     }
 }
+
+export const GET = userAuth(handleGET)
+export const POST = userAuth(handlePOST)
+export const PUT = userAuth(handlePUT)
+export const DELETE = userAuth(handleDELETE)

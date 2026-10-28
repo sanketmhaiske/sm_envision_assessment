@@ -15,7 +15,7 @@ type SearchTaskType = {
 export function SearchTask({ setAddTaskForm, setSearchValue, projectTasksLength }: SearchTaskType) {
     return (
         <>
-            <div className="flex items-center justify-between mt-12">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mt-12">
                 <div className="flex items-center gap-2">
                     <Input
                         type="text"
@@ -31,7 +31,7 @@ export function SearchTask({ setAddTaskForm, setSearchValue, projectTasksLength 
                 <Button
                     text={<><Icon icon="akar-icons:plus" width={16} height={16} />New Task</>}
                     icon=""
-                    className="bg-[#FFE288] text-[#1D1D1D] font-semibold w-max"
+                    className="bg-[#FFE288] text-[#1D1D1D] font-semibold w-full md:w-max"
                     onClick={() => setAddTaskForm(true)}
                 />
             </div>

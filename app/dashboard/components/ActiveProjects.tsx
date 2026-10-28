@@ -135,72 +135,74 @@ export function ActiveProjects({ activeProjects, refetch }: { activeProjects: Ar
                     onClick={() => setAddProjectForm(true)}
                 />
             </div>
-            <table className="w-full mt-8 bg-[#18151C] rounded-md overflow-hidden">
-                <thead className="bg-[#1D1D1D] text-[#95959F] px-4">
-                    <tr className="p-4 px-4 text-left">
-                        <th className="p-2 px-4">Project name</th>
-                        <th>Status</th>
-                        <th>Priority</th>
-                        <th>Deadline</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {activeProjects.map((project: any) => (
-                        <tr className="text-sm text-white" key={project._id}>
-                            <td className="p-2 px-4 py-4">
-                                <Link href={`/tasks/${project._id}?project_title=${project.title}`}>
-                                    {project.title}
-                                </Link>
-                            </td>
-                            <td className="">{project.status}</td>
-                            <td>{project.priority}</td>
-                            <td>{formatDate(project.deadline)}</td>
-                            <td>
-                                <div className="flex gap-2 items-center">
-                                    <figure
-                                        title={'Delete Task'}
-                                        className="rounded-md bg-[#36353A] p-2">
-                                        <Icon
-                                            icon="ant-design:delete-outlined"
-                                            width={14}
-                                            height={14}
-                                            className="text-red-400 hover:text-red-500"
-                                            onClick={() => setDeleteProjectWarning({ _id: project._id, warning: true })}
-                                        />
-                                    </figure>
-                                    <figure
-                                        title={'Edit Task'}
-                                        onClick={() => setUpdateProjectForm({
-                                            show: true,
-                                            projectId: project._id
-                                        })}
-                                        className="rounded-md bg-[#36353A] p-2">
-                                        <Icon
-                                            icon="material-symbols:edit"
-                                            width={14}
-                                            height={14}
-                                        />
-                                    </figure>
-                                    <figure
-                                        title={'View Details'}
-                                        onClick={() => setProjectDetails({
-                                            show: true,
-                                            project: project
-                                        })}
-                                        className="rounded-md bg-[#36353A] p-2">
-                                        <Icon
-                                            icon="akar-icons:eye-open"
-                                            width={14}
-                                            height={14}
-                                        />
-                                    </figure>
-                                </div>
-                            </td>
+            <div className="w-full overflow-x-auto">
+                <table className="w-full  min-w-175 mt-8 bg-[#18151C] rounded-md overflow-hidden">
+                    <thead className="bg-[#1D1D1D] text-[#95959F] px-4">
+                        <tr className="p-4 px-4 text-left">
+                            <th className="p-2 px-4">Project name</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                            <th>Deadline</th>
+                            <th>Actions</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {activeProjects.map((project: any) => (
+                            <tr className="text-sm text-white" key={project._id}>
+                                <td className="p-2 px-4 py-4">
+                                    <Link href={`/tasks/${project._id}?project_title=${project.title}`}>
+                                        {project.title}
+                                    </Link>
+                                </td>
+                                <td className="">{project.status}</td>
+                                <td>{project.priority}</td>
+                                <td>{formatDate(project.deadline)}</td>
+                                <td>
+                                    <div className="flex gap-2 items-center">
+                                        <figure
+                                            title={'Delete Task'}
+                                            className="rounded-md bg-[#36353A] p-2">
+                                            <Icon
+                                                icon="ant-design:delete-outlined"
+                                                width={14}
+                                                height={14}
+                                                className="text-red-400 hover:text-red-500"
+                                                onClick={() => setDeleteProjectWarning({ _id: project._id, warning: true })}
+                                            />
+                                        </figure>
+                                        <figure
+                                            title={'Edit Task'}
+                                            onClick={() => setUpdateProjectForm({
+                                                show: true,
+                                                projectId: project._id
+                                            })}
+                                            className="rounded-md bg-[#36353A] p-2">
+                                            <Icon
+                                                icon="material-symbols:edit"
+                                                width={14}
+                                                height={14}
+                                            />
+                                        </figure>
+                                        <figure
+                                            title={'View Details'}
+                                            onClick={() => setProjectDetails({
+                                                show: true,
+                                                project: project
+                                            })}
+                                            className="rounded-md bg-[#36353A] p-2">
+                                            <Icon
+                                                icon="akar-icons:eye-open"
+                                                width={14}
+                                                height={14}
+                                            />
+                                        </figure>
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </section>
     )
 }

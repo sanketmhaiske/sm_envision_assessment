@@ -7,7 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 
 
 export default function Page() {
-    // const [projects, setProjects] = useState([]);
     const [tasks, setTasks] = useState([]);
 
     const { data: projects, isLoading, refetch } = useQuery({
@@ -15,15 +14,10 @@ export default function Page() {
         queryFn: async () => await getProjects()
     });
 
-    const { data: allTasks, isLoading: tasksLoading } = useQuery({
-        queryKey: ["all_tasks"],
-        queryFn: async () => await getAllTasks()
-    });
-
     return (
         <section className="w-full mb-16">
             <div>
-                <h2 className="text-white text-4xl bricolage font-semibold">
+                <h2 className="text-white h1 bricolage font-semibold">
                     Welcome back, Sanket
                 </h2>
                 <small className="text-gray-50 text-sm">
@@ -31,7 +25,7 @@ export default function Page() {
                 </small>
             </div>
 
-            <div className="flex items-center gap-8 mt-8">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-2 md:flex items-center md:gap-8 mt-8">
                 <Card
                     title="Total Projects"
                     icon="ic:outline-workspaces"

@@ -32,7 +32,7 @@ export function SearchBar({ setSearchValue, projectsLength, setAddProjectForm }:
                     alertType={alertPopup.type}
                 />
             } */}
-            <div className="flex items-center justify-between mt-8">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center justify-between mt-8">
                 <div className="flex items-center gap-2">
                     <Input
                         type="text"
@@ -48,7 +48,7 @@ export function SearchBar({ setSearchValue, projectsLength, setAddProjectForm }:
                 <Button
                     text={<><Icon icon="akar-icons:plus" width={16} height={16} /> New Project</>}
                     icon=""
-                    className="bg-[#FFE288] text-[#1D1D1D] font-semibold w-max"
+                    className="bg-[#FFE288] text-[#1D1D1D] font-semibold sm:w-max"
                     onClick={() => setAddProjectForm(true)}
                 />
             </div>

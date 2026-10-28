@@ -32,8 +32,8 @@ export default function Page() {
     return (
         <section className="mb-16">
             <div className="flex flex-col">
-                <h3 className="h3 text-white">Project Tasks </h3>
-                <small className="text-gray-200">Track and manage your team's tasks.</small>
+                <h2 className="h2 text-white font-semibold bricolage">Project Tasks </h2>
+                <small className="text-gray-400">Track and manage your team's tasks.</small>
             </div>
             <div className="flex items-center gap-2 mt-8">
                 <figure>
@@ -46,7 +46,7 @@ export default function Page() {
                 </figure>
                 <span className="text-sm text-gray-300 hanken">{projectTitle}</span>
             </div>
-            <div className="mt-8 flex items-center gap-8">
+            <div className="mt-8 flex items-center flex-wrap gap-8">
                 <TaskCard
                     name="Total Tasks"
                     value={tasks?.length || 0}

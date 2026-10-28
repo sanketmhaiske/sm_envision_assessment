@@ -97,7 +97,7 @@ export function UpdateTaskForm({ setUpdateTaskForm, taskId, projectId, refetch }
                     alertType={alertPopup.type}
                 />
             }
-            <div className="bg-[#18151C] p-6 rounded-md relative">
+            <div className="bg-[#222225] p-4 sm:p-6 rounded-md relative m-2">
                 <div className="flex flex-col">
                     <h5 className="text-white h4 bricolage font-semibold">
                         Update Task
@@ -135,7 +135,7 @@ export function UpdateTaskForm({ setUpdateTaskForm, taskId, projectId, refetch }
                         onChange={handleChange}
                         defaultValue={form?.description}
                     />
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-2 sm:gap-4">
                         <Select
                             name="status"
                             placeholder="Choose task status"
