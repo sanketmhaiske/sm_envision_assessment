@@ -63,4 +63,9 @@ Next.js · TypeScript · MongoDB · Mongoose · JWT
 
 ##  🟢 AI tools
 
-I used ChatGPT to assist with implementation guidance, debugging, and code improvements. I validated the code by running the application locally, testing the main features and API endpoints, and checking error handling and responsiveness.
+I used ChatGPT to assist with implementation guidance, debugging, and code improvements. 
+
+I validated the code by running the application locally, testing the main features and API endpoints, and checking error handling and responsiveness.
+
+
+------
